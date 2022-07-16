@@ -46,3 +46,34 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
+#sidebar {
+	padding: 5px;
+	border: 2px solid red;
+}
+
+#container {
+	padding: 5px;
+	border: 2px solid blue;
+}
+
+#statsbar {
+	border: 2px solid red;
+}
+
+#stats-bar {
+	border: 2px solid red;
+}
+
+#info-bar {
+	border: 2px solid blue;
+}
+
+#nav-bar {
+	border: 2px solid green;
+}
+
+#booklist {
+	border: 2px solid orange;
+}
