@@ -52,8 +52,8 @@ table {
 :root {
 	--bg: #F6F2EE;
 	--bg-dark: #EEE5DD;
-	--fg-light: #ADBAAB;
-	--fg: #727F70;
+	--fg-light: hsl(112, 10%, 50%);
+	--fg: hsl(112, 6%, 37%);
 	--hl: #EBADE5;
 }
 
@@ -75,6 +75,9 @@ body {
 }
 
 #sidebar {
+	background-color: var(--bg-dark);
+	color: var(--fg-light);
+
 	flex: 1 1 auto;
 
 	padding: 5px;
@@ -99,6 +102,8 @@ body {
 }
 
 #info-bar {
+	background-color: var(--bg-dark);
+
 	border: 2px solid blue;
 }
 
