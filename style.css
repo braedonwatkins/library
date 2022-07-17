@@ -75,12 +75,27 @@ body {
 }
 
 #sidebar {
-	background-color: var(--bg-dark);
-
+	display: flex;
+	justify-content: center;
 	flex: 1 1 auto;
 
-	padding: 5px;
+	background-color: var(--bg-dark);
+
+	padding: 16px 0px;
 	border: 2px solid red;
+}
+#book-form {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+
+	max-width: 256px;
+}
+#book-form > input{
+	margin: 0px 0px 8px 0px;
+}
+#book-form > input[type="submit"] {
+	max-width: 64px;
 }
 
 #container {
