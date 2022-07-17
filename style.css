@@ -84,6 +84,8 @@ body {
 }
 
 #container {
+	background-color: var(--bg);
+
 	display: flex;
 	flex-direction: column;
 	flex: 5 1 auto;
