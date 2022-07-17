@@ -92,12 +92,16 @@ body {
 
 	border: solid 2px blue;
 	display: flex;
+	align-items: center;
 	flex-direction: column;
 	flex: 0 1 auto;
 
 }
 #book-form > * {
 	margin: 0px 0px 16px 0px;
+}
+#book-form > input[type=submit] {
+	flex: 0 1 auto;
 }
 
 #container {
