@@ -76,7 +76,8 @@ body {
 
 #sidebar {
 	display: flex;
-	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	flex: 1 1 auto;
 
 	background-color: var(--bg-dark);
@@ -84,18 +85,19 @@ body {
 	padding: 16px 0px;
 	border: 2px solid red;
 }
+#title {
+	font-size: 32px;
+}
 #book-form {
+
+	border: solid 2px blue;
 	display: flex;
 	flex-direction: column;
-	flex: 1 1 auto;
+	flex: 0 1 auto;
 
-	max-width: 256px;
 }
-#book-form > input{
-	margin: 0px 0px 8px 0px;
-}
-#book-form > input[type="submit"] {
-	max-width: 64px;
+#book-form > * {
+	margin: 0px 0px 16px 0px;
 }
 
 #container {
