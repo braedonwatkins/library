@@ -47,7 +47,23 @@ table {
 	border-spacing: 0;
 }
 
+
+/* Color Palette */
+:root {
+	--bg: #F6F2EE;
+	--bg-dark: #EEE5DD;
+	--fg-light: hsl(112, 10%, 50%);
+	--fg: hsl(112, 6%, 37%);
+	--hl: #EBADE5;
+}
+
+
+/* Main Styling */
 html, body { 
+	background-color: var(--bg);
+	color: var(--fg);
+	font-weight: bold;
+
 	height: 100vh;
 	width: 100vw;
 	margin: 0;
@@ -59,6 +75,8 @@ body {
 }
 
 #sidebar {
+	background-color: var(--bg-dark);
+
 	flex: 1 1 auto;
 
 	padding: 5px;
@@ -84,6 +102,8 @@ body {
 }
 
 #info-bar {
+	background-color: var(--bg-dark);
+
 	border: 2px solid blue;
 }
 
