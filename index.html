@@ -15,21 +15,21 @@
         <form id="book-form">
             <div>
                 <label for="input-title">Title:</label><br/>
-                <input type="text" id="input-title" required/>
+                <input type="text" name="title" id="input-title" placeholder="The Wicked King" required/>
             </div>
             <div>
                 <label for="input-author">Author:</label><br/>
-                <input type="text" id="input-author" required/>
+                <input type="text" name="author" id="input-author" placeholder="Holly Black" required/>
             </div>
             <div>
                 <label for="input-pages">Page Count:</label><br/>
-                <input type="text" id="input-pages" required/>
+                <input type="text" name="pages" id="input-pages" placeholder="368" required/>
             </div>
             <div>
                 <label for="input-status">Read Status:</label>
-                <input type="checkbox" id="input-status"/>
+                <input type="checkbox" name="status" placeholder="true" id="input-status"/>
             </div>
-            <input type="submit" value="submit!"/>
+            <input onclick="addBookToLibrary()" type="submit" value="submit!"/>
         </form>
     </div>
 
