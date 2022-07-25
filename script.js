@@ -24,6 +24,24 @@ function addBookToLibrary() {
 }
 
 
+// Submission Handler
+
+function handleSubmit(event) {
+    event.preventDefault();
+
+    const data = new FormData(event.target);
+
+    const value = Object.fromEntries(data.entries());
+
+    //testing
+    console.log({ value });
+    event.target.reset();
+}
+
+let form = document.getElementById("book-form");
+form.addEventListener('submit', handleSubmit);
+
+
 // Testing
 // let book1 = new Book("Holly Black", "The Wicked King", 180, false);
 // let book2 = new Book("Jandy Nelson", "I'll Give You the Sun", 150, false);
@@ -33,9 +51,7 @@ function addBookToLibrary() {
 // addBookToLibrary(book2);
 // addBookToLibrary(book3);
 
+// function displayBookList() { 
 
-
-function displayBookList() { 
-
-    myLibrary.forEach((book) => {console.table(book);}) 
-}
+//     myLibrary.forEach((book) => {console.table(book);}) 
+// }
