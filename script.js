@@ -26,7 +26,12 @@ function handleSubmit(event) {
 
     const data = new FormData(event.target);
     const value = Object.fromEntries(data.entries());
-    let book = new Book(value.author, value.title, value.pages, value.readStatus);
+    let checkValue = document.getElementById("input-status");
+    
+    checkValue.checked ? checkValue = "true" : checkValue = "false";
+    console.log(checkValue);
+
+    let book = new Book(value.author, value.title, value.pages, checkValue);
 
     addBookToLibrary(book);
     templateGen(book);
@@ -53,9 +58,8 @@ function templateGen(book) {
     clone.childNodes[1].innerText = book.title;
     clone.childNodes[3].innerText = book.author;
     clone.childNodes[5].innerText = book.pages;
-    clone.childNodes[7] ? clone.childNodes[3] = "read" : clone.childNodes[3] = "unread";
+    clone.childNodes[7].innerText = book.readStatus;
 
-    // console.log(clone.childNodes);
     bookList.appendChild(clone);
 }
 
@@ -68,6 +72,7 @@ function templateGen(book) {
 // addBookToLibrary(book1);
 // addBookToLibrary(book2);
 // addBookToLibrary(book3);
+
 
 function displayBookList() { 
     // myLibrary.forEach((book) => {console.log(book);}) 
