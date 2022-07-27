@@ -28,7 +28,7 @@ function handleSubmit(event) {
     const value = Object.fromEntries(data.entries());
     let checkValue = document.getElementById("input-status");
     
-    checkValue.checked ? checkValue = "true" : checkValue = "false";
+    checkValue.checked ? checkValue = "read" : checkValue = "unread";
     console.log(checkValue);
 
     let book = new Book(value.author, value.title, value.pages, checkValue);
@@ -45,6 +45,8 @@ function handleSubmit(event) {
 let form = document.getElementById("book-form");
 form.addEventListener("submit", handleSubmit);
 
+
+// ISSUE : Text Overflow
 
 function templateGen(book) {
     const bookList = document.getElementById("booklist");
