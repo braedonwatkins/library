@@ -133,3 +133,8 @@ body {
 #booklist {
 	border: 2px solid orange;
 }
+
+.book {
+	display: flex;
+	flex-direction: row;
+}
