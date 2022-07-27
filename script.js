@@ -10,17 +10,12 @@ function Book(author, title, pages, readStatus) {
     this.readStatus = readStatus;
 }
 
-function addBookToLibrary() { 
-    let book = new Book();
-    book.title = document.getElementById("input-title");
-    book.author = document.getElementById("input-author");
-    book.pages = document.getElementById("input-pages");
-    book.readStatus = document.getElementById("input-status");
+function addBookToLibrary(book) { 
 
     myLibrary.push(book); 
 
     //testing
-    displayBookList();
+    // displayBookList();
 }
 
 
@@ -33,9 +28,14 @@ function handleSubmit(event) {
 
     const value = Object.fromEntries(data.entries());
 
-    //testing
-    console.log({ value });
+    let book = new Book(value.author, value.title, value.pages, value.readStatus);
+    addBookToLibrary(book);
+
+    // //testing
+    // console.log( book );
+
     event.target.reset();
+
 }
 
 let form = document.getElementById("book-form");
@@ -51,7 +51,7 @@ form.addEventListener("submit", handleSubmit);
 // addBookToLibrary(book2);
 // addBookToLibrary(book3);
 
-// function displayBookList() { 
-
-//     myLibrary.forEach((book) => {console.table(book);}) 
-// }
+function displayBookList() { 
+    // myLibrary.forEach((book) => {console.log(book);}) 
+    console.table(myLibrary);
+}
