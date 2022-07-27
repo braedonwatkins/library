@@ -39,7 +39,7 @@ function handleSubmit(event) {
 }
 
 let form = document.getElementById("book-form");
-form.addEventListener('submit', handleSubmit);
+form.addEventListener("submit", handleSubmit);
 
 
 // Testing
