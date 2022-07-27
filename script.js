@@ -25,11 +25,11 @@ function handleSubmit(event) {
     event.preventDefault();
 
     const data = new FormData(event.target);
-
     const value = Object.fromEntries(data.entries());
-
     let book = new Book(value.author, value.title, value.pages, value.readStatus);
+
     addBookToLibrary(book);
+    templateGen(book);
 
     // //testing
     // console.log( book );
@@ -37,9 +37,27 @@ function handleSubmit(event) {
     event.target.reset();
 
 }
-
 let form = document.getElementById("book-form");
 form.addEventListener("submit", handleSubmit);
+
+
+function templateGen(book) {
+    const bookList = document.getElementById("booklist");
+    const temp = document.getElementById("template");
+    
+    // temp (clon) -> book (clone) -> title,author,pages,status
+    var clon = temp.content.cloneNode(true);
+    const clone = clon.childNodes[1];
+
+    // inner text counts seperately as children therefore odd numbers used for input fields
+    clone.childNodes[1].innerText = book.title;
+    clone.childNodes[3].innerText = book.author;
+    clone.childNodes[5].innerText = book.pages;
+    clone.childNodes[7] ? clone.childNodes[3] = "read" : clone.childNodes[3] = "unread";
+
+    // console.log(clone.childNodes);
+    bookList.appendChild(clone);
+}
 
 
 // Testing
