@@ -131,10 +131,19 @@ body {
 }
 
 #booklist {
+	display: flex;
+	flex-direction: column;
+	gap: 10px 0px;
+
 	border: 2px solid orange;
 }
 
 .book {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-around;
+
+	border-style: dotted;
+	border-color: #EBADE5;
+	border-bottom: dotted 3px #EBADE5;
 }
