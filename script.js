@@ -1,7 +1,10 @@
-
+var myLibrary = [];
 
 // Required Code
-var myLibrary = [];
+window.onload = () => {
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    templateGen();
+};
 
 function Book(author, title, pages, readStatus) {
     this.author = author;
@@ -56,10 +59,15 @@ function templateGen() {
     console.log(library);
     
     // temp (clon) -> book (clone) -> title,author,pages,status
-    var clon = temp.content.cloneNode(true);
-    const clone = clon.childNodes[1];
+    // var clon = temp.content.cloneNode(true);
+    // const clone = clon.childNodes[1];
 
     library.forEach(book => {
+
+        // temp (clon) -> book (clone) -> title,author,pages,status
+        var clon = temp.content.cloneNode(true);
+        const clone = clon.childNodes[1];
+
         // inner text counts seperately as children therefore odd numbers used for input fields
         clone.childNodes[1].innerText = book.title;
         clone.childNodes[3].innerText = book.author;
