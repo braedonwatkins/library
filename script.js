@@ -29,7 +29,6 @@ function handleSubmit(event) {
     let checkValue = document.getElementById("input-status");
     
     checkValue.checked ? checkValue = "read" : checkValue = "unread";
-    console.log(checkValue);
 
     let book = new Book(value.author, value.title, value.pages, checkValue);
 
