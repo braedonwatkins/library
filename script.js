@@ -1,7 +1,7 @@
 
 
 // Required Code
-let myLibrary = [];
+var myLibrary = [];
 
 function Book(author, title, pages, readStatus) {
     this.author = author;
