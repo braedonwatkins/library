@@ -3,7 +3,10 @@ var myLibrary = [];
 // Required Code
 window.onload = () => {
     myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
-    templateGen();
+    
+    myLibrary.forEach(book => {
+        templateGen(book);
+    });
 };
 
 function Book(author, title, pages, readStatus) {
@@ -37,7 +40,7 @@ function handleSubmit(event) {
     let book = new Book(value.author, value.title, value.pages, checkValue);
 
     addBookToLibrary(book);
-    templateGen();
+    templateGen(book);
 
     // //testing
     // console.log( book );
@@ -51,32 +54,23 @@ form.addEventListener("submit", handleSubmit);
 function returnBooks() { return (JSON.parse(localStorage.getItem("myLibrary"))); }
 
 // ISSUE : Text Overflow
-function templateGen() {
+function templateGen(book) {
     const bookList = document.getElementById("booklist");
-    const temp = document.getElementById("template");
-    const library = returnBooks();
+    const template = document.getElementById("template");
 
-    console.log(library);
+    // console.log(library);
     
     // temp (clon) -> book (clone) -> title,author,pages,status
-    // var clon = temp.content.cloneNode(true);
-    // const clone = clon.childNodes[1];
+    var clon = template.content.cloneNode(true);
+    const clone = clon.childNodes[1];
 
-    library.forEach(book => {
+    // inner text counts seperately as children therefore odd numbers used for input fields
+    clone.childNodes[1].innerText = book.title;
+    clone.childNodes[3].innerText = book.author;
+    clone.childNodes[5].innerText = book.pages;
+    clone.childNodes[7].innerText = book.readStatus;
 
-        // temp (clon) -> book (clone) -> title,author,pages,status
-        var clon = temp.content.cloneNode(true);
-        const clone = clon.childNodes[1];
-
-        // inner text counts seperately as children therefore odd numbers used for input fields
-        clone.childNodes[1].innerText = book.title;
-        clone.childNodes[3].innerText = book.author;
-        clone.childNodes[5].innerText = book.pages;
-        clone.childNodes[7].innerText = book.readStatus;
-    
-        bookList.appendChild(clone);
-    });
-
+    bookList.appendChild(clone);
 }
 
 
