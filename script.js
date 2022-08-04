@@ -13,6 +13,7 @@ function Book(author, title, pages, readStatus) {
 function addBookToLibrary(book) { 
 
     myLibrary.push(book); 
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 
     //testing
     // displayBookList();
