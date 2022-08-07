@@ -17,12 +17,8 @@ function Book(author, title, pages, readStatus) {
 }
 
 function addBookToLibrary(book) { 
-
     myLibrary.push(book); 
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-
-    //testing
-    // displayBookList();
 }
 
 
@@ -42,9 +38,6 @@ function handleSubmit(event) {
     addBookToLibrary(book);
     templateGen(book);
 
-    // //testing
-    // console.log( book );
-
     event.target.reset();
 
 }
@@ -53,12 +46,9 @@ form.addEventListener("submit", handleSubmit);
 
 function returnBooks() { return (JSON.parse(localStorage.getItem("myLibrary"))); }
 
-// ISSUE : Text Overflow
 function templateGen(book) {
     const bookList = document.getElementById("booklist");
     const template = document.getElementById("template");
-
-    // console.log(library);
     
     // temp (clon) -> book (clone) -> title,author,pages,status
     var clon = template.content.cloneNode(true);
@@ -73,18 +63,3 @@ function templateGen(book) {
     bookList.appendChild(clone);
 }
 
-
-// Testing
-// let book1 = new Book("Holly Black", "The Wicked King", 180, false);
-// let book2 = new Book("Jandy Nelson", "I'll Give You the Sun", 150, false);
-// let book3 = new Book("J.K. Dipshit", "Harry Potter and the Goblet of Fire", 218, true);
-
-// addBookToLibrary(book1);
-// addBookToLibrary(book2);
-// addBookToLibrary(book3);
-
-
-function displayBookList() { 
-    // myLibrary.forEach((book) => {console.log(book);}) 
-    console.table(myLibrary);
-}
