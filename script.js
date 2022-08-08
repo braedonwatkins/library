@@ -5,6 +5,9 @@ var myLibrary = [];
 
 // Required Code
 window.onload = () => {
+    let form = document.getElementById("book-form");
+    form.addEventListener("submit", handleSubmit);
+
     myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
     
     myLibrary.forEach(book => {
