@@ -1,5 +1,8 @@
 var myLibrary = [];
 
+// SELF DESTRUCT
+// localStorage.setItem("myLibrary", []);
+
 // Required Code
 window.onload = () => {
     myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
