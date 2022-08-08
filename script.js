@@ -1,9 +1,22 @@
+var myLibrary = [];
 
+// SELF DESTRUCT
+// localStorage.setItem("myLibrary", []);
 
 // Required Code
-let myLibrary = [];
+window.onload = () => {
+    let form = document.getElementById("book-form");
+    form.addEventListener("submit", handleSubmit);
 
-function Book(author, title, pages, readStatus) {
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    
+    myLibrary.forEach(book => {
+        templateGen(book);
+    });
+};
+
+function Book(idNum, author, title, pages, readStatus) {
+    this.idNum = idNum;
     this.author = author;
     this.title = title;
     this.pages = pages;
@@ -11,15 +24,10 @@ function Book(author, title, pages, readStatus) {
 }
 
 function addBookToLibrary(book) { 
-
     myLibrary.push(book); 
-
-    //testing
-    // displayBookList();
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
 
-
-// Submission Handler
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -29,31 +37,28 @@ function handleSubmit(event) {
     let checkValue = document.getElementById("input-status");
     
     checkValue.checked ? checkValue = "read" : checkValue = "unread";
-    console.log(checkValue);
 
-    let book = new Book(value.author, value.title, value.pages, checkValue);
+    let book = new Book(myLibrary.length, value.author, value.title, value.pages, checkValue);
 
     addBookToLibrary(book);
     templateGen(book);
 
-    // //testing
-    // console.log( book );
-
     event.target.reset();
 
 }
-let form = document.getElementById("book-form");
-form.addEventListener("submit", handleSubmit);
 
+function handleDelete(event) {
+    console.log(event.target.parentNode.childNodes[11].value);
+}
 
-// ISSUE : Text Overflow
+function returnBooks() { return (JSON.parse(localStorage.getItem("myLibrary"))); }
 
 function templateGen(book) {
     const bookList = document.getElementById("booklist");
-    const temp = document.getElementById("template");
+    const template = document.getElementById("template");
     
     // temp (clon) -> book (clone) -> title,author,pages,status
-    var clon = temp.content.cloneNode(true);
+    var clon = template.content.cloneNode(true);
     const clone = clon.childNodes[1];
 
     // inner text counts seperately as children therefore odd numbers used for input fields
@@ -61,22 +66,8 @@ function templateGen(book) {
     clone.childNodes[3].innerText = book.author;
     clone.childNodes[5].innerText = book.pages;
     clone.childNodes[7].innerText = book.readStatus;
+    clone.childNodes[9].addEventListener("click", handleDelete);
+    clone.childNodes[11].value = book.idNum;
 
     bookList.appendChild(clone);
-}
-
-
-// Testing
-// let book1 = new Book("Holly Black", "The Wicked King", 180, false);
-// let book2 = new Book("Jandy Nelson", "I'll Give You the Sun", 150, false);
-// let book3 = new Book("J.K. Dipshit", "Harry Potter and the Goblet of Fire", 218, true);
-
-// addBookToLibrary(book1);
-// addBookToLibrary(book2);
-// addBookToLibrary(book3);
-
-
-function displayBookList() { 
-    // myLibrary.forEach((book) => {console.log(book);}) 
-    console.table(myLibrary);
 }
