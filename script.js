@@ -15,7 +15,8 @@ window.onload = () => {
     });
 };
 
-function Book(author, title, pages, readStatus) {
+function Book(idNum, author, title, pages, readStatus) {
+    this.idNum = idNum;
     this.author = author;
     this.title = title;
     this.pages = pages;
