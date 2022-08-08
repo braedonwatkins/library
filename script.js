@@ -29,8 +29,6 @@ function addBookToLibrary(book) {
 }
 
 
-// Submission Handler
-
 function handleSubmit(event) {
     event.preventDefault();
 
