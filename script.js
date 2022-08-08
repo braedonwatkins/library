@@ -38,7 +38,7 @@ function handleSubmit(event) {
     
     checkValue.checked ? checkValue = "read" : checkValue = "unread";
 
-    let book = new Book(value.author, value.title, value.pages, checkValue);
+    let book = new Book(myLibrary.length, value.author, value.title, value.pages, checkValue);
 
     addBookToLibrary(book);
     templateGen(book);
@@ -64,7 +64,8 @@ function templateGen(book) {
     clone.childNodes[3].innerText = book.author;
     clone.childNodes[5].innerText = book.pages;
     clone.childNodes[7].innerText = book.readStatus;
+    clone.childNodes[9].addEventListener("click", handleDelete);
+    clone.childNodes[11].value = book.idNum;
 
     bookList.appendChild(clone);
 }
-
