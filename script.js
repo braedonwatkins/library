@@ -46,8 +46,10 @@ function handleSubmit(event) {
     event.target.reset();
 
 }
-let form = document.getElementById("book-form");
-form.addEventListener("submit", handleSubmit);
+
+function handleDelete(event) {
+    console.log(event.target.parentNode.childNodes[11].value);
+}
 
 function returnBooks() { return (JSON.parse(localStorage.getItem("myLibrary"))); }
 
