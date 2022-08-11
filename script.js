@@ -41,14 +41,17 @@ function handleSubmit(event) {
     
     checkValue.checked ? checkValue = "read" : checkValue = "unread";
 
-    if(myLibrary)
+    
+    if(!myLibrary)
+    {
+        let book = new Book(0, value.author, value.title, value.pages, checkValue);
+    } else 
     {
         let book = new Book(myLibrary.length, value.author, value.title, value.pages, checkValue);
-        addBookToLibrary(book);
-        templateGen(book);
     }
-
-
+    
+    addBookToLibrary(book);
+    templateGen(book);
     event.target.reset();
 }
 
