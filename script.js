@@ -8,11 +8,10 @@ window.onload = () => {
     let form = document.getElementById("book-form");
     form.addEventListener("submit", handleSubmit);
 
-    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
-    
-    if(myLibrary) 
+    const library = returnBooks();
+    if(library) 
     {
-        myLibrary.forEach(book => {
+        library.forEach(book => {
             templateGen(book);
         });
     }
@@ -41,14 +40,11 @@ function handleSubmit(event) {
     
     checkValue.checked ? checkValue = "read" : checkValue = "unread";
 
-    
-    if(!myLibrary)
-    {
-        let book = new Book(0, value.author, value.title, value.pages, checkValue);
-    } else 
-    {
-        let book = new Book(myLibrary.length, value.author, value.title, value.pages, checkValue);
-    }
+    let ListLen;
+    const library = returnBooks();
+    library ? ListLen = library.length : ListLen = 0;
+
+    const book = new Book(ListLen, value.author, value.title, value.pages, checkValue);
     
     addBookToLibrary(book);
     templateGen(book);
