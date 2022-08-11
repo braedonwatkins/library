@@ -47,8 +47,23 @@ function handleSubmit(event) {
 
 }
 
+
+//take it out of memory, take it off of the DOM, re-render
 function handleDelete(event) {
-    console.log(event.target.parentNode.childNodes[11].value);
+    const bookList = document.getElementById("booklist");
+    const bookListChildren = bookList.children;
+
+    for(let i = 1; i < bookListChildren.length; i++) 
+    {
+        if(event.target.parentNode === bookListChildren[i])
+        {
+            bookList.removeChild(event.target.parentNode);
+
+            const library = returnBooks();
+            library.splice(i-1, 1);
+            localStorage.setItem("myLibrary", JSON.stringify(library));
+        } 
+    } 
 }
 
 function returnBooks() { return (JSON.parse(localStorage.getItem("myLibrary"))); }
