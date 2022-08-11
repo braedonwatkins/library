@@ -44,13 +44,12 @@ function handleSubmit(event) {
     if(myLibrary)
     {
         let book = new Book(myLibrary.length, value.author, value.title, value.pages, checkValue);
+        addBookToLibrary(book);
+        templateGen(book);
     }
 
-    addBookToLibrary(book);
-    templateGen(book);
 
     event.target.reset();
-
 }
 
 
