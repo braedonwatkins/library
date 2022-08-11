@@ -10,9 +10,12 @@ window.onload = () => {
 
     myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
     
-    myLibrary.forEach(book => {
-        templateGen(book);
-    });
+    if(myLibrary) 
+    {
+        myLibrary.forEach(book => {
+            templateGen(book);
+        });
+    }
 };
 
 function Book(idNum, author, title, pages, readStatus) {
@@ -38,7 +41,10 @@ function handleSubmit(event) {
     
     checkValue.checked ? checkValue = "read" : checkValue = "unread";
 
-    let book = new Book(myLibrary.length, value.author, value.title, value.pages, checkValue);
+    if(myLibrary)
+    {
+        let book = new Book(myLibrary.length, value.author, value.title, value.pages, checkValue);
+    }
 
     addBookToLibrary(book);
     templateGen(book);
